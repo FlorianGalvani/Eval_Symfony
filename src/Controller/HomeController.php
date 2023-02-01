@@ -16,9 +16,13 @@ class HomeController extends AbstractController
         $entityManager = $doctrine->getManager();
         //find the 10 latest published videos
         $videos = $entityManager->getRepository(Video::class)->findBy([],['createdAt' => 'DESC'],10);
+        $films = $entityManager->getRepository(Video::class)->findBy(['type' => 'movie'],['createdAt' => 'DESC'],10);
+        $series = $entityManager->getRepository(Video::class)->findBy(['type' => 'serie'],['createdAt' => 'DESC'],10);
 
         return $this->render('home/index.html.twig', [
             'videos' => $videos,
+            'films' => $films,
+            'series' => $series,
         ]);
     }
 

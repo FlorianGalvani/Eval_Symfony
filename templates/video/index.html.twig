@@ -15,10 +15,29 @@
 			background: #F5F5F5;
 			padding: 2px 6px;
 		}
+                .moreLink {
+            border-radius:8px;
+            background-color: transparent;
+			border: 1px solid #000;
+            color: #000;
+            text-decoration: none;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+        }
+
+        .moreLink:hover {
+            background-color: #111;
+            color: #fff;
+        }
+
+        .appTitle {
+			color: #f00;
+
+		}
 	</style>
 
 	<div class="example-wrapper">
-        <a href="/">Retour à l'acceuil</a>
+        <a href="/" class="moreLink">Retour à <span class="appTitle">l'acceuil</span></a>
 		<h1>{{video.name}}</h1>
 		<p class="videoType">{{ video.type }}</p>
 		<p class="videoSynopsis">{{ video.synopsis }}</p>

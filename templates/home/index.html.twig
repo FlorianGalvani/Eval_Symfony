@@ -1,64 +1,149 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    .cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 1024px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+
+		.appTitle {
+			color: #f00;
+
+		}
+
+		.cards {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+
+		.cardsTitle {
+			width: 100%;
+		}
 
 
-    .card {
-        display: flex-column;
-        padding: 10px;
-        margin-top: 20px;
-        width: 30%;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        min-height: 300px;
-        max-height: 300px;
-    }
+		.card {
+			display: flex-column;
+			padding: 10px;
+			margin-top: 20px;
+			width: 30%;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 8px;
+			min-height: 300px;
+			max-height: 300px;
+		}
 
-    .videoName {
-        margin: 10px 0;
-    }
+		.videoName {
+			margin: 10px 0;
+			font-size: 0.95em;
+		}
 
-    .videoType {
-        color: #999;
-        font-size: 0.8em;
-    }
+		.videoType {
+			color: #888;
+			font-size: 0.8em;
+		}
 
-    .videoSynopsis {
-        font-size: 0.9em;
-        max-height: 100px;
-        overflow: hidden;
-    }
+		.videoSynopsis {
+			font-size: 0.9em;
+			min-height: 100px;
+			max-height: 100px;
+			overflow: hidden;
+		}
 
-    .videoCreatedAt {
-        color: #999;
-        font-size: 0.8em;
-    }
-</style>
+		.videoCreatedAt {
+			color: #888;
+			font-size: 0.8em;
+		}
 
-<div class="example-wrapper" >
-    <h1>Tu dummmmmmm</h1>
-    <h2> Bienvenue sur Netfleet</h2>
-        <div class="cards">
-        {% for video in videos %}
-            <div class="card" >
-                <h3 class="videoName">{{ video.name }}</h3>
-                <p class="videoType">{{ video.type }}</p>
-                <p class="videoSynopsis">{{ video.synopsis }}</p>
-                <p class="videoCreatedAt">{{ video.getCreatedAt()|date('Y-m-d') }}</p>
-                <a href="/video/{{video.id}}">Voir plus</a>
-            </div>
-        {% endfor %}
-        </ul>
-</div>
+		.moreLink {
+			border-radius: 8px;
+			background-color: transparent;
+			border: 1px solid #000;
+			color: #000;
+			text-decoration: none;
+			padding: 5px 10px;
+			transition: all 0.3s ease;
+		}
+
+		.moreLink:hover {
+			background-color: #111;
+			color: #fff;
+		}
+	</style>
+
+	<div class="example-wrapper">
+		<h1>TU
+			<span class="appTitle">
+				DUM
+			</span>
+		</h1>
+		<h2>Bienvenue sur la liste des dernieres sorties de
+			<span class="appTitle">{{'Netfleet' | upper}}</span>
+		</h2>
+		<div class="cards">
+			<h2 class="cardsTitle">Dernier(e)s
+				<span class="appTitle">
+					Films/Series
+				</span>
+			</h2>
+			{% for video in videos %}
+				<div class="card">
+					<h3 class="videoName">{{ video.name }}</h3>
+					<p class="videoType">{{ video.type }}</p>
+					<p class="videoSynopsis">{{ video.synopsis }}</p>
+					<p class="videoCreatedAt">{{ video.getCreatedAt()|date('Y-m-d') }}</p>
+					<a href="/video/{{video.id}}" class="moreLink">Voir
+						<span class="appTitle">plus</span>
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="cards">
+			<h2 class="cardsTitle">Derniers
+				<span class="appTitle">
+					Films
+				</span>
+			</h2>
+			{% for film in films %}
+				<div class="card">
+					<h3 class="videoName">{{ film.name }}</h3>
+					<p class="videoType">{{ film.type }}</p>
+					<p class="videoSynopsis">{{ film.synopsis }}</p>
+					<p class="videoCreatedAt">{{ film.getCreatedAt()|date('Y-m-d') }}</p>
+					<a href="/video/{{film.id}}" class="moreLink">Voir
+						<span class="appTitle">plus</span>
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="cards">
+			<h2 class="cardsTitle">Dernieres
+				<span class="appTitle">
+					Series
+				</span>
+			</h2>
+			{% for serie in series %}
+				<div class="card">
+					<h3 class="videoName">{{ serie.name }}</h3>
+					<p class="videoType">{{ serie.type }}</p>
+					<p class="videoSynopsis">{{ serie.synopsis }}</p>
+					<p class="videoCreatedAt">{{ serie.getCreatedAt()|date('Y-m-d') }}</p>
+					<a href="/video/{{serie.id}}" class="moreLink">Voir
+						<span class="appTitle">plus</span>
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}
