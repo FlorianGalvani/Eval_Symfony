@@ -31,7 +31,10 @@ class HomeController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $video = $entityManager->getRepository(Video::class)->find($id);
-
+        
+        if ($video === null) {
+            return $this->redirectToRoute('app_home');
+        }
         return $this->render('video/index.html.twig', [
             'video' => $video,
         ]);
