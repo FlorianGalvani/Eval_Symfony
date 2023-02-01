@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+
+    .card {
+        display: flex-column;
+        padding: 10px;
+        margin-top: 20px;
+        width: 30%;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        min-height: 300px;
+        max-height: 300px;
+    }
+
+    .videoName {
+        margin: 10px 0;
+    }
+
+    .videoType {
+        color: #999;
+        font-size: 0.8em;
+    }
+
+    .videoSynopsis {
+        font-size: 0.9em;
+        max-height: 100px;
+        overflow: hidden;
+    }
+
+    .videoCreatedAt {
+        color: #999;
+        font-size: 0.8em;
+    }
+</style>
+
+<div class="example-wrapper" >
+    <h1>Tu dummmmmmm</h1>
+    <h2> Bienvenue sur Netfleet</h2>
+        <div class="cards">
+        {% for video in videos %}
+            <div class="card" >
+                <h3 class="videoName">{{ video.name }}</h3>
+                <p class="videoType">{{ video.type }}</p>
+                <p class="videoSynopsis">{{ video.synopsis }}</p>
+                <p class="videoCreatedAt">{{ video.getCreatedAt()|date('Y-m-d') }}</p>
+                <a href="/video/{{video.id}}">Voir plus</a>
+            </div>
+        {% endfor %}
+        </ul>
+</div>
+{% endblock %}
